@@ -33,7 +33,11 @@ public class Person implements Subject<Post>, Observer<Person> {
     }
 
     private void notifyObservers(Post post) {
-        observerList.forEach(observer -> System.out.println("Hi " + observer.getName() + ", dodano nowy post " + post.message + " u: " + name));
+        observerList.forEach(observer -> sendMessage(post,observer));
+    }
+
+    private void sendMessage(Post post, Person observer){
+        System.out.println("Hi " + observer.getName() + ", added new post " + post.message + " in: " + name);
     }
 
     @Override
